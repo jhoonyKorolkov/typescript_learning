@@ -1,8 +1,4 @@
-function calculateTax(
-    amount: number,
-    discount: number = 0,
-    ...extraFees: number[]
-) {
+function calculateTax(amount, discount = 0, ...extraFees) {
     return (
         amount * 1.2 -
         discount +
@@ -11,34 +7,24 @@ function calculateTax(
 }
 const taxValue = calculateTax(1, 0)
 console.log(`Tax value: ${taxValue}`)
-
-interface Animal {
-    name: string
-    age: number
-    eat: [string, number?]
-}
-
-const test: Animal = {
+const test = {
     name: 'dsd',
     age: 2,
     eat: ['grass']
 }
-
 class Cat {
-    name: string
-    constructor(name: string) {
+    name
+    constructor(name) {
         this.name = name
     }
 }
-
 class Dog {
-    name: string
-    constructor(name: string) {
+    name
+    constructor(name) {
         this.name = name
     }
 }
-
 new Cat('ni')
 new Dog('ni')
-
 console.log(test)
+//# sourceMappingURL=index.js.map

@@ -2,6 +2,11 @@
     "compilerOptions": {
         "target": "ES2022",
         "outDir": "./dist",
-        "rootDir": "./src"
+        "rootDir": "./src",
+        "declaration": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "noImplicitReturns": true,
+        "preserveConstEnums": true
     }
 }
