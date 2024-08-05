@@ -4,7 +4,7 @@ import tseslint from 'typescript-eslint'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import prettierPlugin from 'eslint-plugin-prettier'
 
-/** @type {import('eslint').Linter.FlatConfig[]} */
+// /** @type {import('eslint').Linter.FlatConfig[]} */
 export default [
     {
         plugins: {

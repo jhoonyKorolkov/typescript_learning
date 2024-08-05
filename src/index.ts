@@ -29,6 +29,9 @@ class Cat {
     constructor(name: string) {
         this.name = name
     }
+    getAge() {
+        return 2
+    }
 }
 
 class Dog {
