@@ -17,5 +17,8 @@
     },
     "overrides": {
         "eslint": "^9.7.0"
+    },
+    "dependencies": {
+        "uuidv4": "^6.2.13"
     }
 }

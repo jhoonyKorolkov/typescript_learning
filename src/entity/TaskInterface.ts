@@ -1,9 +1,12 @@
 import { Priorities, Statuses } from '../enums/TaskEnum'
 
-export default interface Task {
+interface Task {
+    id: string
     title: string
     description?: string
     priority: Priorities
-    dueData?: Date
+    dueDate?: Date
     status: Statuses
 }
+
+export default Task
