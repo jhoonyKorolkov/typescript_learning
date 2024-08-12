@@ -6,7 +6,10 @@
         "moduleResolution": "node",
         "target": "ES6",
         "esModuleInterop": true,
-        "strict": true
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true
+
+        // "strict": true
     },
     "include": ["src/**/*.ts"],
     "exclude": ["node_modules"]

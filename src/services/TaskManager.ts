@@ -1,46 +1,43 @@
-import Task from '../entity/TaskInterface'
-import { Priorities, Statuses } from '../enums/TaskEnum'
+import BaseTask from '../entity/task/Task'
 import { v4 } from 'uuid'
+import authorize from '../decorators/authorize'
 
-class TaskManager {
-    private tasks: Map<string, Task> = new Map()
+class TaskManager<T extends BaseTask> {
+    private tasks: Map<string, T> = new Map()
+    private userRole: string
 
-    createTask(
-        title: string,
-        description: string,
-        priority: Priorities,
-        dueDate: Date,
-        status: Statuses
-    ): Task {
-        const id = v4()
-        const newTask: Task = {
-            id,
-            title,
-            description,
-            priority,
-            dueDate,
-            status
-        }
-        this.tasks.set(id, newTask)
-        return newTask
+    constructor(userRole: string) {
+        this.userRole = userRole
     }
 
-    updateTask(id: string, updates: Partial<Task>): Task | undefined {
+    @authorize('admin')
+    createTask(task: Omit<T, 'id'>): T {
+        const id = v4()
+        const taskWithId = { ...task, id } as T
+        this.tasks.set(id, taskWithId)
+        return taskWithId
+    }
+
+    @authorize('admin')
+    @authorize('user')
+    updateTask(id: string, updates: Partial<T>): T | undefined {
         const task = this.tasks.get(id)
         if (task) {
-            const updateTask = { ...task, ...updates }
+            const updateTask = { ...task, ...updates } as T
             this.tasks.set(id, updateTask)
             return updateTask
         }
         return
     }
 
+    @authorize('admin')
+    @authorize('user')
     removeTask(id: string): void {
         this.tasks.delete(id)
     }
 
-    getAllTasks(): Task[] {
-        return Array.from(this.tasks.values())
+    getAllTasks(): T[] {
+        return Array.from(this.tasks.values()) as T[]
     }
 }
 

@@ -1,21 +1,29 @@
 import { Priorities, Statuses } from './enums/TaskEnum'
 import TaskManager from './services/TaskManager'
+import DetailTask from './entity/task/DetailtTask'
+import NoteTask from './entity/task/NoteTask'
 
-const taskManager = new TaskManager()
+const detailedTaskManager = new TaskManager<DetailTask>('admin')
+const noteTaskManager = new TaskManager<NoteTask>('admin')
 
-const newTask = taskManager.createTask(
-    'hello',
-    'how are you',
-    Priorities.High,
-    new Date('2024-08-18'),
-    Statuses.Pending
-)
+const newTask = detailedTaskManager.createTask({
+    title: 'Finish TypeScript project',
+    description: 'Complete all features',
+    priority: Priorities.High,
+    status: Statuses.InProgress,
+    dueDate: new Date('2024-08-20')
+})
 
-const allTasks = taskManager.getAllTasks()
+const newTaskNote = noteTaskManager.createTask({
+    title: 'Finish TypeScript project',
+    note: 'Complete all features',
+    page: 323,
+    priority: Priorities.High,
+    status: Statuses.InProgress
+})
 
-const updateTask = taskManager.updateTask(
-    '98e93c7f-b39c-4ece-940c-d31cf91460f8',
-    { status: Statuses.Completed, title: 'norm' }
-)
+const all = detailedTaskManager.getAllTasks()
+// console.log(all)
 
-console.log(updateTask)
+// console.log(newTask)
+// console.log(newTaskNote)

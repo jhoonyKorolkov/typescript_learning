@@ -5,8 +5,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const TaskEnum_1 = require("./enums/TaskEnum");
 const TaskManager_1 = __importDefault(require("./services/TaskManager"));
-const taskManager = new TaskManager_1.default();
-const newTask = taskManager.createTask('hello', 'how are you', TaskEnum_1.Priorities.High, new Date('2024-08-18'), TaskEnum_1.Statuses.Pending);
-const allTasks = taskManager.getAllTasks();
-const updateTask = taskManager.updateTask('98e93c7f-b39c-4ece-940c-d31cf91460f8', { status: TaskEnum_1.Statuses.Completed, title: 'norm' });
-console.log(updateTask);
+const detailedTaskManager = new TaskManager_1.default('admin');
+const noteTaskManager = new TaskManager_1.default('admin');
+const newTask = detailedTaskManager.createTask({
+    title: 'Finish TypeScript project',
+    description: 'Complete all features',
+    priority: TaskEnum_1.Priorities.High,
+    status: TaskEnum_1.Statuses.InProgress,
+    dueDate: new Date('2024-08-20')
+});
+const newTaskNote = noteTaskManager.createTask({
+    title: 'Finish TypeScript project',
+    note: 'Complete all features',
+    page: 323,
+    priority: TaskEnum_1.Priorities.High,
+    status: TaskEnum_1.Statuses.InProgress
+});
+const all = detailedTaskManager.getAllTasks();
+// console.log(all)
+// console.log(newTask)
+// console.log(newTaskNote)
