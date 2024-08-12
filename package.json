@@ -1,7 +1,6 @@
 {
     "name": "todo",
     "version": "1.0.0",
-    "main": "index.js",
     "scripts": {
         "eslint": "eslint src",
         "eslint:dump": "eslint --print-config ./.eslint.config.mjs",
@@ -12,14 +11,9 @@
     "license": "ISC",
     "description": "",
     "devDependencies": {
-        "@eslint/js": "^9.7.0",
-        "eslint": "^9.7.0",
-        "eslint-config-prettier": "^9.1.0",
-        "eslint-plugin-prettier": "^5.2.1",
-        "globals": "^15.8.0",
+        "prettier": "^3.3.3",
         "tsc-watch": "^6.2.0",
-        "typescript": "^5.6.0-dev.20240710",
-        "typescript-eslint": "^7.16.1"
+        "typescript": "^5.6.0-dev.20240710"
     },
     "overrides": {
         "eslint": "^9.7.0"

@@ -1,13 +1,13 @@
 {
     "compilerOptions": {
-        "target": "ES2022",
         "outDir": "./dist",
         "rootDir": "./src",
-        "declaration": true,
-        "noImplicitAny": true,
-        "strictNullChecks": true,
-        "noImplicitReturns": true,
-        "pretty": true,
-        "preserveConstEnums": true
-    }
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "target": "ES6",
+        "esModuleInterop": true,
+        "strict": true
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules"]
 }
